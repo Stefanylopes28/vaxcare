@@ -4,19 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const familyForm = document.getElementById("family-form");
     const familyListSection = document.getElementById("family-list");
 
-    // Função para calcular a idade em meses com base na data de nascimento
     function idadeEmMeses(dataNascimento) {
         const nascimento = new Date(dataNascimento);
         const hoje = new Date();
 
-        // Calculando a diferença entre as datas
         const anos = hoje.getFullYear() - nascimento.getFullYear();
         const meses = hoje.getMonth() - nascimento.getMonth();
 
-        return anos * 12 + meses; // Convertendo para meses
+        return anos * 12 + meses; 
     }
 
-    // Função para adicionar uma vacina à lista
     vacinaForm.addEventListener("submit", (event) => {
         event.preventDefault();
         
@@ -25,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const vacina = document.getElementById("vacina").value;
         const dataAplicacao = document.getElementById("dataAplicacao").value;
 
-        // Criação de uma nova linha na tabela
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${idadeMeses}</td>
@@ -35,11 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         vacinaList.appendChild(row);
 
-        // Limpar os campos após o cadastro
         vacinaForm.reset();
     });
 
-    // Função para adicionar um integrante à família
     familyForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -48,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const dataNascimentoIntegrante = document.getElementById("data_nascimento").value;
         const genero = document.querySelector('input[name="genero"]:checked').value;
 
-        // Criação de um novo integrante
         const integrante = document.createElement("div");
         integrante.classList.add("family-member");
         integrante.innerHTML = `
@@ -59,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         familyListSection.appendChild(integrante);
 
-        // Limpar os campos após o cadastro
         familyForm.reset();
     });
 });
